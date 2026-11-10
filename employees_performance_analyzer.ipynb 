@@ -1,0 +1,80 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNVeCIV5M9PfbCc+FTqUKgo",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/garvitasharma-355/Employees-performance-analyzer/blob/main/employees_performance_analyzer.ipynb%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "DzcIpoi7xOVe",
+        "outputId": "4d57b039-c530-4820-f0c2-e647d853145a"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "{'total_employees': 6, 'high_performers': 4, 'low_performers': 2, 'top_performer': 'Neha', 'it_high_performers': 3, 'employee_status': {'Aman': 'Excellent', 'Riya': 'Needs Improvement', 'Neha': 'Excellent', 'Raj': 'Needs Improvement', 'Simran': 'Good', 'Karan': 'Excellent'}}\n"
+          ]
+        }
+      ],
+      "source": [
+        "employees = [\n",
+        "    {\"name\": \"Aman\", \"department\": \"IT\", \"salary\": 45000, \"performance\": 85},\n",
+        "    {\"name\": \"Riya\", \"department\": \"HR\", \"salary\": 30000, \"performance\": 65},\n",
+        "    {\"name\": \"Neha\", \"department\": \"IT\", \"salary\": 60000, \"performance\": 95},\n",
+        "    {\"name\": \"parv\", \"department\": \"Sales\", \"salary\": 25000, \"performance\": 35},\n",
+        "    {\"name\": \"Sakshi\", \"department\": \"IT\", \"salary\": 35000, \"performance\": 75},\n",
+        "    {\"name\": \"Kunal\", \"department\": \"Sales\", \"salary\": 50000, \"performance\": 90}\n",
+        "]\n",
+        "def analyze_performance(employees) :\n",
+        "    employees_count=len(list(map(lambda i : i[\"name\"],employees)))\n",
+        "    high_performers=len(list(filter(lambda i :i[\"performance\"]>=70, employees)))\n",
+        "    low_performers=len(list(filter(lambda i :i[\"performance\"]<70, employees)))\n",
+        "    top_performer=max(employees,key=lambda i: i[\"performance\"])[\"name\"]\n",
+        "    #t_high_performers = len([i for i in employees if i[\"department\"] == \"IT\" and i[\"performance\"] >= 70])one more way of extracting top_perfomer\n",
+        "    it_high_performers = sum(1 for i in employees if i[\"department\"] == \"IT\" and i[\"performance\"] >= 70)\n",
+        "    employee_status={}\n",
+        "    for i in employees:\n",
+        "        if i[\"performance\"] >=80 :\n",
+        "            employee_status.update({i[\"name\"]:\"Excellent\"})\n",
+        "        elif i [\"performance\"]>=70 :\n",
+        "            employee_status.update({i[\"name\"]:\"Good\"})\n",
+        "        else:\n",
+        "            employee_status.update({i[\"name\"]:\"Needs Improvement\"})\n",
+        "    r={ \"total_employees\": employees_count, \"high_performers\": high_performers,\"low_performers\": low_performers,\n",
+        "        \"top_performer\": top_performer, \"it_high_performers\": it_high_performers,\"employee_status\":employee_status}\n",
+        "    return r\n",
+        "p=analyze_performance(employees)\n",
+        "print(p)"
+      ]
+    }
+  ]
+}
