@@ -1,3 +1,3 @@
 # Employees Performance Analyzer
 
-This repository contains the Employees Performance Analyzer project.
+A Python-based Employee Performance Analyzer mini project, using Lambda Functions, Filter, List Comprehensions, and other concise Python techniques to analyze employee performance efficiently. Demonstrates clean, readable, and smart Python coding practices.
